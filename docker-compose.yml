@@ -1,0 +1,24 @@
+services:
+    chartproxy:
+        image: chartproxy
+        ports:
+            - 80:80
+        restart: always
+ 
+    reactivechart:
+        depends_on:
+            - chartproxy
+        ports:
+            - 5338:5338
+        volumes:
+          - ../reactivechart/:/app
+        image: reactivechart
+        restart: always
+ 
+    chartapi:
+        depends_on:
+            - chartproxy
+        ports:
+            - 5337:5337
+        image: chartapi
+        restart: always
