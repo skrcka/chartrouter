@@ -20,5 +20,7 @@ services:
             - chartproxy
         ports:
             - 5337:5337
+        environment:
+            - R_HOME=/usr/lib/R
         image: chartapi
         restart: always
